@@ -12,7 +12,7 @@ class KaryawanController extends Controller
      */
     public function index()
     {
-        return view('karyawan.index',['karyawan' => Karyawan::latest()->get()]);
+        return view('karyawan.index',['karyawan' => Karyawan::all()]);
     }
 
     /**
@@ -82,7 +82,8 @@ class KaryawanController extends Controller
      */
     public function destroy(string $id)
     {
-        Karyawan::where('id',$id)->delete();
+        $karyawan = Karyawan::find($id);
+        $karyawan->delete();
         return redirect()->route('karyawan.index')->with('success','Data Karyawan telah dihapus.');
     }
 }
