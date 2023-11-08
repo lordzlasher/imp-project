@@ -31,6 +31,7 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware('auth')->group(function () {
     Route::resource('karyawan',KaryawanController::class);
+    Route::get('/karyawan/{id}/delete',[KaryawanController::class,'destroy']);
 });
 
 require __DIR__.'/auth.php';

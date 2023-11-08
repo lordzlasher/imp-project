@@ -276,6 +276,7 @@
         </div>
     </div>
 
+
     <!-- Bootstrap core JavaScript-->
     <script src="{{ asset('tamplate/vendor/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('tamplate/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>

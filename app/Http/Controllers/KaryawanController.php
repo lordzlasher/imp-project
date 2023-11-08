@@ -72,8 +72,9 @@ class KaryawanController extends Controller
         ]);
 
         Karyawan::where('id',$id)->update($validatedData);
+
+        return redirect()->route('karyawan.index')->with('success','Data Karyawan berhasil diedit.');
         
-        return redirect('/karyawan')->with('success','Data Karyawan berhasil diedit.');
     }
 
     /**
@@ -81,8 +82,7 @@ class KaryawanController extends Controller
      */
     public function destroy(string $id)
     {
-        $karyawan = Karyawan::find($id);
-        $karyawan->delete();
-        return redirect('/karyawan')->with('success','Data Karyawan telah dihapus.');
+        Karyawan::where('id',$id)->delete();
+        return redirect()->route('karyawan.index')->with('success','Data Karyawan telah dihapus.');
     }
 }

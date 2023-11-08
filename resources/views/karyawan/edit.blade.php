@@ -17,7 +17,8 @@
                         <h6 class="m-0 font-weight-bold text-primary">Form Edit Karyawan</h6>
                     </div>
                     <div class="table-responsive">
-                        <form method="post" enctype="multipart/form-data" action="{{ route('karyawan.update', $karyawan) }}">
+                        <form method="post" enctype="multipart/form-data"
+                            action="{{ route('karyawan.update', $karyawan) }}">
                             @csrf
                             @method('put')
                             <table class="table table-bordered">
@@ -25,7 +26,7 @@
                                     <th>Nama</th>
                                     <td>
                                         <input name="nama" type="text" class="form-control"
-                                            value="{{$karyawan->nama}}" />
+                                            value="{{ $karyawan->nama }}" />
                                         @error('nama')
                                             {{ $message }}
                                         @enderror
@@ -34,7 +35,7 @@
                                 <tr>
                                     <th>Alamat</th>
                                     <td><input name="alamat" type="text" class="form-control"
-                                        value="{{$karyawan->alamat}}" />
+                                            value="{{ $karyawan->alamat }}" />
                                         @error('alamat')
                                             {{ $message }}
                                         @enderror
@@ -45,7 +46,7 @@
                                 <tr>
                                     <th>Nomer Hp</th>
                                     <td><input name="nomer_hp" type="text" class="form-control"
-                                        value="{{$karyawan->nomer_hp}}" />
+                                            value="{{ $karyawan->nomer_hp }}" />
                                         @error('nomer_hp')
                                             {{ $message }}
                                         @enderror

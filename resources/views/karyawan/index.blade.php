@@ -9,9 +9,9 @@
         <h1 class="h3 mb-2 text-gray-800">Karyawan</h1>
         <p class="mb-4">Data Karyawan IMP Bali.</p>
 
-        @if (session('massage'))
+        @if (session('message'))
             <div class="alert alert-success allert-dismissable fade show" role="alert">
-                {{ session('massage') }}
+                {{ session('message') }}
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">$times;</span>
                 </button>
@@ -48,8 +48,38 @@
                                     <td>
                                         <a href="{{ url('karyawan/' . $row->id . '/edit') }}"
                                             class="btn btn-warning btn-sm"><i class="fas fa-edit"></i>Edit</a>
-                                        <a href="{{ url('karyawan/' . $row->id . '/delete') }}"
+                                        <a href="#" data-toggle="modal" data-target="#deleteModal"
                                             class="btn btn-danger btn-sm"><i class="fas fa-trash"></i>Hapus</a>
+
+                                        <!-- Delete Modal-->
+                                        <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog"
+                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">Sure want to Delete?
+                                                        </h5>
+                                                        <button class="close" type="button" data-dismiss="modal"
+                                                            aria-label="Close">
+                                                            <span aria-hidden="true">×</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">Select "Delete" below if you are sure to delete
+                                                        the data.</div>
+                                                    <div class="modal-footer">
+                                                        <button class="btn btn-secondary" type="button"
+                                                            data-dismiss="modal">Cancel</button>
+                                                        <form method="GET"
+                                                            action="{{ url('karyawan/' . $row->id . '/delete') }}">
+                                                            @csrf
+                                                            <button class="btn btn-danger"
+                                                                href="{{ url('karyawan/' . $row->id . '/delete') }}">
+                                                                Delete</button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </td>
                                 </tr>
                             @endforeach
@@ -61,4 +91,6 @@
 
     </div>
     <!-- /.container-fluid -->
+
+
 @endsection
