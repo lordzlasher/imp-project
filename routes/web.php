@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\KaryawanController;
+use App\Http\Controllers\InventoryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,6 +33,11 @@ Route::middleware('auth')->group(function () {
 Route::middleware('auth')->group(function () {
     Route::resource('karyawan',KaryawanController::class);
     Route::get('/karyawan/{id}/delete',[KaryawanController::class,'destroy']);
+});
+
+Route::middleware('auth')->group(function () {
+    Route::resource('inventory',InventoryController::class);
+    Route::get('/inventory/{id}/delete',[InventoryController::class,'destroy']);
 });
 
 require __DIR__.'/auth.php';

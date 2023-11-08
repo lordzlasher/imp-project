@@ -3,16 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Karyawan;
+use App\Models\Inventory;
 
-class KaryawanController extends Controller
+class InventoryController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('karyawan.index',['karyawan' => Karyawan::all()]);
+        return view('inventory.index',['inventory' => Inventory::all()]);
     }
 
     /**
@@ -20,7 +20,7 @@ class KaryawanController extends Controller
      */
     public function create()
     {
-        return view('karyawan.create');
+        return view('inventory.create');
     }
 
     /**
@@ -30,17 +30,17 @@ class KaryawanController extends Controller
     {
         $request->validate([
             'nama' => 'required',
-            'alamat' => 'required',
-            'nomer_hp' => 'required|numeric'
+            'satuan' => 'required',
+            'jumlah' => 'required|numeric'
         ]);
 
-        Karyawan::create([
+        Inventory::create([
             'nama' => $request->nama,
-            'alamat' => $request->alamat,
-            'nomer_hp' => $request->nomer_hp
+            'satuan' => $request->satuan,
+            'jumlah' => $request->jumlah
         ]);
 
-        return redirect()->route('karyawan.index')->with('success','Data Karyawan telah ditambahkan.');
+        return redirect()->route('inventory.index')->with('success','Data Inventory telah ditambahkan.');
     }
 
     /**
@@ -56,8 +56,8 @@ class KaryawanController extends Controller
      */
     public function edit(string $id)
     {
-        $karyawan = Karyawan::find($id);
-        return view('karyawan.edit', compact('karyawan'));
+        $inventory = Inventory::find($id);
+        return view('inventory.edit', compact('inventory'));
     }
 
     /**
@@ -67,14 +67,13 @@ class KaryawanController extends Controller
     {
         $validatedData = $request->validate([
             'nama' => 'required',
-            'alamat' => 'required',
-            'nomer_hp' => 'required|numeric'
+            'satuan' => 'required',
+            'jumlah' => 'required|numeric'
         ]);
 
-        Karyawan::where('id',$id)->update($validatedData);
+        Inventory::where('id',$id)->update($validatedData);
 
-        return redirect()->route('karyawan.index')->with('success','Data Karyawan berhasil diedit.');
-        
+        return redirect()->route('inventory.index')->with('success','Data Inventory berhasil diedit.');
     }
 
     /**
@@ -82,9 +81,8 @@ class KaryawanController extends Controller
      */
     public function destroy(string $id)
     {
-        Karyawan::where('id',$id)->delete();
-        // $karyawan = Karyawan::find($id);
-        // $karyawan->delete();
-        return redirect()->route('karyawan.index')->with('success','Data Karyawan telah dihapus.');
+        $inventory = Inventory::find($id);
+        $inventory->delete();
+        return redirect()->route('inventory.index')->with('success','Data Inventory telah dihapus.');
     }
 }
