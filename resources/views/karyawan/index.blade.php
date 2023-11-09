@@ -48,11 +48,12 @@
                                     <td>
                                         <a href="{{ url('karyawan/' . $row->id . '/edit') }}"
                                             class="btn btn-warning btn-sm"><i class="fas fa-edit"></i>Edit</a>
-                                        <a href="#" data-toggle="modal" data-target="#deleteModal"
-                                            class="btn btn-danger btn-sm"><i class="fas fa-trash"></i>Hapus</a>
+                                        <a href="{{ url('karyawan/' . $row->id . '/delete') }}" data-toggle="modal"
+                                            data-target="#deleteModal{{ $row->id }}" class="btn btn-danger btn-sm"><i
+                                                class="fas fa-trash"></i>Hapus</a>
 
                                         <!-- Delete Modal-->
-                                        <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog"
+                                        <div class="modal fade" id="deleteModal{{ $row->id }}" tabindex="-1" role="dialog"
                                             aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content">

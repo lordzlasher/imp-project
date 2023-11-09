@@ -59,11 +59,11 @@
                 Menu
             </div>
 
-            <!-- Nav Item - Job -->
-            <li class="nav-item {{ request()->is('job') ? 'active' : '' }}">
+            <!-- Nav Item - Event -->
+            <li class="nav-item {{ request()->is('Event') ? 'active' : '' }}">
                 <a class="nav-link" href="">
                     <i class="fas fa-fw fa-briefcase"></i>
-                    <span>Job</span></a>
+                    <span>Event</span></a>
             </li>
 
             <!-- Nav Item - Inventory -->
