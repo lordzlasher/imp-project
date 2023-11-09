@@ -38,7 +38,6 @@
                                             {{ $message }}
                                         @enderror
                                     </td>
-
                                 </tr>
                                 <tr>
                                     <th>Satuan</th>
