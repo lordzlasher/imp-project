@@ -60,8 +60,8 @@
             </div>
 
             <!-- Nav Item - Event -->
-            <li class="nav-item {{ request()->is('Event') ? 'active' : '' }}">
-                <a class="nav-link" href="">
+            <li class="nav-item {{ request()->is('event') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('event.index') }}">
                     <i class="fas fa-fw fa-briefcase"></i>
                     <span>Event</span></a>
             </li>

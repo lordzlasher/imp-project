@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\KaryawanController;
 use App\Http\Controllers\InventoryController;
+use App\Http\Controllers\EventController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -38,6 +39,11 @@ Route::middleware('auth')->group(function () {
 Route::middleware('auth')->group(function () {
     Route::resource('inventory',InventoryController::class);
     Route::get('/inventory/{id}/delete',[InventoryController::class,'destroy']);
+});
+
+Route::middleware('auth')->group(function () {
+    Route::resource('event',EventController::class);
+    Route::get('/event/{id}/delete',[EventController::class,'destroy']);
 });
 
 require __DIR__.'/auth.php';

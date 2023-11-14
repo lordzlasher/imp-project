@@ -14,12 +14,13 @@ return new class extends Migration
         Schema::create('events', function (Blueprint $table) {
             $table->id();
             $table->date('tanggal_loading');
-            $table->date('tanggal_acara');
+            $table->date('tanggal_mulai');
+            $table->date('tanggal_akhir');
             $table->text('ukuran_led');
-            $table->text('alat_tambahan');
+            $table->text('alat_tambahan')->nullable();
             $table->text('venue');
-            $table->text('note');
-            $table->text('status');
+            $table->text('note')->nullable();;
+            $table->text('status')->nullable();;
             $table->timestamps();
         });
     }

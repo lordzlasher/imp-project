@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Karyawan;
 use App\Models\Event;
 use App\Models\EventCrew;
 
@@ -13,7 +14,7 @@ class EventController extends Controller
      */
     public function index()
     {
-        //
+        return view('event.index',['event' => Event::all()]);
     }
 
     /**
@@ -21,7 +22,8 @@ class EventController extends Controller
      */
     public function create()
     {
-        //
+        $karyawans = Karyawan::all();
+        return view('event.create2',compact('karyawans'));
     }
 
     /**
@@ -29,7 +31,22 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'tanggal_loading' => 'required',
+            'tanggal_awal' => 'required',
+            'tanggal_akhir' => 'required',
+            'ukuran_led' => 'required',
+            'venue' => 'required',
+            'nomer_hp' => 'required|numeric'
+        ]);
+
+        Event::create([
+            'nama' => $request->nama,
+            'alamat' => $request->alamat,
+            'nomer_hp' => $request->nomer_hp
+        ]);
+
+        return redirect()->route('event.index')->with('success','Data Event telah ditambahkan.');
     }
 
     /**
