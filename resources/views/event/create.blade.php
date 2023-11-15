@@ -119,17 +119,14 @@
 
                         </div>
                     </div>
-                </div>
-
-                <div class="col-lg-5">
-                    <div class="card card-header-actions">
-                        <div class="card-header">
-                            Simpan
-                            <i class="text-muted" data-feather="info" data-bs-toggle="tooltip" data-bs-placement="left"
-                                title="After submitting, your post will be published once it is approved by a moderator."></i>
-                        </div>
-                        <div class="card-body">
-                            <div class="d-grid"><button class="fw-500 btn btn-primary">Simpan</button></div>
+                    <div class="col-lg-4">
+                        <div class="card card-header-actions">
+                            <div class="card-header">
+                                Simpan
+                            </div>
+                            <div class="card-body">
+                                <div class="d-grid"><button class="fw-500 btn btn-primary">Simpan</button></div>
+                            </div>
                         </div>
                     </div>
                 </div>

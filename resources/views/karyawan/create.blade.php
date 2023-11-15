@@ -9,59 +9,56 @@
         <h1 class="h3 mb-2 text-gray-800">Karyawan</h1>
         <p class="mb-4">Data Karyawan IMP Bali.</p>
 
-        <!-- Form -->
-        <div class="row">
-            <div class="col-6">
-                <div class="card shadow mb-4">
-                    <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">Form Tambah Karyawan</h6>
+        <div class="container-fluid px-4">
+            <form method="post" enctype="multipart/form-data" action="{{ route('karyawan.store') }}">
+                @csrf
+                <div class="row gx-4">
+                    <div class="col-lg-8">
+
+                        <div class="card mb-4">
+                            <div class="card-header">Nama</div>
+                            <div class="card-body">
+                                <input name="nama" type="text" class="form-control" value="{{ old('nama') }}" />
+                                @error('nama')
+                                    {{ $message }}
+                                @enderror
+                            </div>
+
+                            <div class="card mb-4">
+                                <div class="card-header">Alamat</div>
+                                <div class="card-body">
+                                    <input name="alamat" type="text" class="form-control" value="{{ old('alamat') }}" />
+                                    @error('alamat')
+                                        {{ $message }}
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="card mb-4">
+                                <div class="card-header">Nomer HP</div>
+                                <div class="card-body">
+                                    <input name="nomer_hp" type="text" class="form-control"
+                                        value="{{ old('nomer_hp') }}" />
+                                    @error('nomer_hp')
+                                        {{ $message }}
+                                    @enderror
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
-                    <div class="table-responsive">
-                        <form method="post" enctype="multipart/form-data" action="{{ route('karyawan.store') }}">
-                            @csrf
-                            <table class="table table-bordered">
-                                <tr>
-                                    <th>Nama</th>
-                                    <td>
-                                        <input name="nama" type="text" class="form-control"
-                                            value="{{ old('nama') }}" />
-                                        @error('nama')
-                                            {{ $message }}
-                                        @enderror
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>Alamat</th>
-                                    <td><input name="alamat" type="text" class="form-control"
-                                            value="{{ old('alamat') }}" />
-                                        @error('alamat')
-                                            {{ $message }}
-                                        @enderror
-                                    </td>
-
-                                </tr>
-                                <tr>
-                                <tr>
-                                    <th>Nomer Hp</th>
-                                    <td><input name="nomer_hp" type="text" class="form-control"
-                                            value="{{ old('nomer_hp') }}" />
-                                        @error('nomer_hp')
-                                            {{ $message }}
-                                        @enderror
-                                    </td>
-
-                                </tr>
-                                <tr>
-                                    <td colspan="2">
-                                        <button type="submit" class="btn btn-primary btn-sm"><i
-                                                class="fas fa-save"></i>Simpan</button>
-                                    </td>
-                                </tr>
-                            </table>
-                        </form>
+                    <div class="col-lg-4">
+                        <div class="card card-header-actions">
+                            <div class="card-header">
+                                Simpan
+                            </div>
+                            <div class="card-body">
+                                <div class="d-grid"><button class="fw-500 btn btn-primary">Simpan</button></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
     <!-- End Page Content -->

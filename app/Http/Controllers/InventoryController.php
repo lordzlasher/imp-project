@@ -12,7 +12,7 @@ class InventoryController extends Controller
      */
     public function index()
     {
-        return view('inventory.index',['inventory' => Inventory::all()]);
+        return view('inventory.index', ['inventory' => Inventory::all()]);
     }
 
     /**
@@ -20,7 +20,14 @@ class InventoryController extends Controller
      */
     public function create()
     {
-        return view('inventory.create');
+        // Membuat array pilihan status
+        $units = [
+            ['id' => '1', 'nama' => 'Pcs'],
+            ['id' => '2', 'nama' => 'Cabinet'],
+            ['id' => '3', 'nama' => 'Box'],
+        ];
+
+        return view('inventory.create', compact('units'));
     }
 
     /**
@@ -40,7 +47,7 @@ class InventoryController extends Controller
             'jumlah' => $request->jumlah
         ]);
 
-        return redirect()->route('inventory.index')->with('success','Data Inventory telah ditambahkan.');
+        return redirect()->route('inventory.index')->with('success', 'Data Inventory telah ditambahkan.');
     }
 
     /**
@@ -56,8 +63,14 @@ class InventoryController extends Controller
      */
     public function edit(string $id)
     {
+        $units = [
+            ['id' => '1', 'nama' => 'Pcs'],
+            ['id' => '2', 'nama' => 'Cabinet'],
+            ['id' => '3', 'nama' => 'Box'],
+        ];
+
         $inventory = Inventory::find($id);
-        return view('inventory.edit', compact('inventory'));
+        return view('inventory.edit', compact('inventory', 'units'));
     }
 
     /**
@@ -71,9 +84,9 @@ class InventoryController extends Controller
             'jumlah' => 'required|numeric'
         ]);
 
-        Inventory::where('id',$id)->update($validatedData);
+        Inventory::where('id', $id)->update($validatedData);
 
-        return redirect()->route('inventory.index')->with('success','Data Inventory berhasil diedit.');
+        return redirect()->route('inventory.index')->with('success', 'Data Inventory berhasil diedit.');
     }
 
     /**
@@ -83,6 +96,6 @@ class InventoryController extends Controller
     {
         $inventory = Inventory::find($id);
         $inventory->delete();
-        return redirect()->route('inventory.index')->with('success','Data Inventory telah dihapus.');
+        return redirect()->route('inventory.index')->with('success', 'Data Inventory telah dihapus.');
     }
 }

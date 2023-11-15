@@ -31,7 +31,7 @@ class EventController extends Controller
             ['id' => '3', 'nama' => 'Crew + Operator'],
         ];
 
-        return view('event.create2', compact('karyawans', 'statuses'));
+        return view('event.create', compact('karyawans', 'statuses'));
     }
 
     /**
