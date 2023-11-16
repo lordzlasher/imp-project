@@ -23,6 +23,9 @@
     <!-- Custom styles for this page -->
     <link href="{{ asset('tamplate/vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.28.0/feather.min.js" crossorigin="anonymous">
+    </script>
+
 </head>
 
 <body id="page-top">
@@ -38,7 +41,9 @@
             <!-- Main Content -->
             <div id="content">
                 @include('component.topbar')
-
+                <div class="container-fluid px-4">
+                    @include('component/header')
+                </div>
                 @yield('content')
             </div>
             <!-- End of Main Content -->

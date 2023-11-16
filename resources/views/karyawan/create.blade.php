@@ -1,65 +1,66 @@
 @extends('layouts/tamplate')
+
 @section('title', 'Tambah Karyawan IMP')
 @section('content')
-
     <!-- Begin Page Content -->
     <div class="container-fluid">
 
-        <!-- Page Heading -->
-        <h1 class="h3 mb-2 text-gray-800">Karyawan</h1>
-        <p class="mb-4">Data Karyawan IMP Bali.</p>
+    @section('header-title', 'Karyawan Baru')
+    @section('header-description', 'Formulir untuk menambah Data karyawan baru.')
+    @section('back', 'Back')
+    @section('back-link', route('karyawan.index'))
 
-        <div class="container-fluid px-4">
-            <form method="post" enctype="multipart/form-data" action="{{ route('karyawan.store') }}">
-                @csrf
-                <div class="row gx-4">
-                    <div class="col-lg-8">
+    <div class="container-fluid px-4">
+        <form method="post" enctype="multipart/form-data" action="{{ route('karyawan.store') }}">
+            @csrf
+            <div class="row gx-4">
+                <div class="col-lg-8">
+
+                    <div class="card mb-4">
+                        <div class="card-header">Nama</div>
+                        <div class="card-body">
+                            <input name="nama" type="text" class="form-control" value="{{ old('nama') }}" />
+                            @error('nama')
+                                {{ $message }}
+                            @enderror
+                        </div>
 
                         <div class="card mb-4">
-                            <div class="card-header">Nama</div>
+                            <div class="card-header">Alamat</div>
                             <div class="card-body">
-                                <input name="nama" type="text" class="form-control" value="{{ old('nama') }}" />
-                                @error('nama')
+                                <input name="alamat" type="text" class="form-control" value="{{ old('alamat') }}" />
+                                @error('alamat')
                                     {{ $message }}
                                 @enderror
                             </div>
-
-                            <div class="card mb-4">
-                                <div class="card-header">Alamat</div>
-                                <div class="card-body">
-                                    <input name="alamat" type="text" class="form-control" value="{{ old('alamat') }}" />
-                                    @error('alamat')
-                                        {{ $message }}
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <div class="card mb-4">
-                                <div class="card-header">Nomer HP</div>
-                                <div class="card-body">
-                                    <input name="nomer_hp" type="text" class="form-control"
-                                        value="{{ old('nomer_hp') }}" />
-                                    @error('nomer_hp')
-                                        {{ $message }}
-                                    @enderror
-                                </div>
-                            </div>
-
                         </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="card card-header-actions">
-                            <div class="card-header">
-                                Simpan
-                            </div>
+
+                        <div class="card mb-4">
+                            <div class="card-header">Nomer HP</div>
                             <div class="card-body">
-                                <div class="d-grid"><button class="fw-500 btn btn-primary">Simpan</button></div>
+                                <input name="nomer_hp" type="text" class="form-control"
+                                    value="{{ old('nomer_hp') }}" />
+                                @error('nomer_hp')
+                                    {{ $message }}
+                                @enderror
                             </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card card-header-actions">
+                        <div class="card-header">
+                            Simpan
+                        </div>
+                        <div class="card-body">
+                            <div class="d-grid"><button class="fw-500 btn btn-primary">Simpan</button></div>
                         </div>
                     </div>
                 </div>
-            </form>
-        </div>
+            </div>
+        </form>
     </div>
-    <!-- End Page Content -->
+</div>
+<!-- End Page Content -->
 @endsection

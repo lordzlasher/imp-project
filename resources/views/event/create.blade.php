@@ -6,133 +6,142 @@
     <div class="container-fluid">
 
         <!-- Page Heading -->
-        <h1 class="h3 mb-2 text-gray-800">Form Event</h1>
+    @section('header-title', 'Form Event')
+    @section('header-description', 'Formulir untuk menambah Data Event baru.')
+    @section('back', 'Back')
+    @section('back-link', route('event.index'))
 
-        <!-- Main page content-->
-        <div class="container-fluid px-4">
-            <form method="post" enctype="multipart/form-data" action="{{ route('event.store') }}">
-                @csrf
-                <div class="row gx-4">
-                    <div class="col-lg-8">
-                        <div class="card mb-4">
-                            <div class="card-header">Tanggal Loading</div>
-                            <div class="card-body">
-                                <input name="tanggal_loading" type="date" class="form-control"
-                                    value="{{ old('tanggal_loading') }}" />
-                                @error('tanggal_loading')
-                                    {{ $message }}
-                                @enderror
-                            </div>
-
-                            <div class="card-header">Tanggal Mulai Event</div>
-                            <div class="card-body">
-                                <input name="tanggal_mulai" type="date" class="form-control"
-                                    value="{{ old('tanggal_mulai') }}" />
-                                @error('tanggal_mulai')
-                                    {{ $message }}
-                                @enderror
-                            </div>
-
-                            <div class="card-header">Tanggal Selesai Event</div>
-                            <div class="card-body">
-                                <input name="tanggal_akhir" type="date" class="form-control"
-                                    value="{{ old('tanggal_akhir') }}" />
-                                @error('tanggal_akhir')
-                                    {{ $message }}
-                                @enderror
-                            </div>
-
-                            <div class="card-header">Ukuran LED</div>
-                            <div class="card-body">
-                                <input name="ukuran_led" type="text" class="form-control"
-                                    value="{{ old('ukuran_led') }}" />
-                                @error('ukuran_led')
-                                    {{ $message }}
-                                @enderror
-                            </div>
-
-                            <div class="card-header">Barang Tambahan</div>
-                            <div class="card-body">
-                                <input name="alat_tambahan" type="text" class="form-control"
-                                    value="{{ old('alat_tambahan') }}" />
-                                @error('alat_tambahan')
-                                    {{ $message }}
-                                @enderror
-                            </div>
-
-                            <div class="card-header">Venue</div>
-                            <div class="card-body">
-                                <input name="venue" type="text" class="form-control" value="{{ old('venue') }}" />
-                                @error('venue')
-                                    {{ $message }}
-                                @enderror
-                            </div>
-
-                            <div class="card-header">Note</div>
-                            <div class="card-body">
-                                <input name="note" type="text" class="form-control" value="{{ old('note') }}" />
-                                @error('note')
-                                    {{ $message }}
-                                @enderror
-                            </div>
+    <!-- Main page content-->
+    <div class="container-fluid px-4">
+        <form method="post" enctype="multipart/form-data" action="{{ route('event.store') }}">
+            @csrf
+            <div class="row gx-4">
+                <div class="col-lg-8">
+                    <div class="card mb-4">
+                        <div class="card-header">Tanggal Loading</div>
+                        <div class="card-body">
+                            <input name="tanggal_loading" type="date" class="form-control"
+                                value="{{ old('tanggal_loading') }}" />
+                            @error('tanggal_loading')
+                                {{ $message }}
+                            @enderror
                         </div>
 
-                        <!-- Page Heading -->
-                        <h1 class="h3 mb-2 text-gray-800">Form Crew</h1>
+                        <div class="card-header">Tanggal Mulai Event</div>
+                        <div class="card-body">
+                            <input name="tanggal_mulai" type="date" class="form-control"
+                                value="{{ old('tanggal_mulai') }}" />
+                            @error('tanggal_mulai')
+                                {{ $message }}
+                            @enderror
+                        </div>
 
-                        <div class="card mb-5 crew-item ">
-                            <div class="card-header">Crew
-                                <button class="close" type="button" aria-label="Close">
-                                    <span>×</span>
-                                </button>
-                            </div>
-                            <div class="card-body">
-                                <select name="karyawan[]" class="form-control">
-                                    <option value="" disabled selected hidden>Pilih Crew</option>
-                                    @foreach ($karyawans as $karyawan)
-                                        <option value="{{ $karyawan->id }}">{{ $karyawan->nama }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
+                        <div class="card-header">Tanggal Selesai Event</div>
+                        <div class="card-body">
+                            <input name="tanggal_akhir" type="date" class="form-control"
+                                value="{{ old('tanggal_akhir') }}" />
+                            @error('tanggal_akhir')
+                                {{ $message }}
+                            @enderror
+                        </div>
 
-                            <div class="card-header">Status</div>
-                            <div class="card-body">
-                                <select name="status_crew[]" class="form-control">
-                                    <option value="" disabled selected hidden>Pilih Status Crew</option>
-                                    @foreach ($statuses as $status)
-                                        <option value="{{ $status['nama'] }}">{{ $status['nama'] }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
+                        <div class="card-header">Ukuran LED</div>
+                        <div class="card-body">
+                            <input name="ukuran_led" type="text" class="form-control"
+                                value="{{ old('ukuran_led') }}" />
+                            @error('ukuran_led')
+                                {{ $message }}
+                            @enderror
+                        </div>
 
-                            <div class="card-header">Keterangan</div>
-                            <div class="card-body">
-                                <input name="keterangan_crew[]" type="text" class="form-control"
-                                    value="{{ old('keterangan_crew[]') }}" />
-                                @error('keterangan_crew')
-                                    {{ $message }}
-                                @enderror
-                            </div>
-                            <div class="card-footer">
-                                <button type="button" class="btn btn-success btn-add-crew">Tambah Karyawan</button>
-                            </div>
+                        <div class="card-header">Barang Tambahan</div>
+                        <div class="card-body">
+                            <input name="alat_tambahan" type="text" class="form-control"
+                                value="{{ old('alat_tambahan') }}" />
+                            @error('alat_tambahan')
+                                {{ $message }}
+                            @enderror
+                        </div>
 
+                        <div class="card-header">Venue</div>
+                        <div class="card-body">
+                            <input name="venue" type="text" class="form-control" value="{{ old('venue') }}" />
+                            @error('venue')
+                                {{ $message }}
+                            @enderror
+                        </div>
+
+                        <div class="card-header">Note</div>
+                        <div class="card-body">
+                            <input name="note" type="text" class="form-control" value="{{ old('note') }}" />
+                            @error('note')
+                                {{ $message }}
+                            @enderror
                         </div>
                     </div>
-                    <div class="col-lg-4">
-                        <div class="card card-header-actions">
-                            <div class="card-header">
-                                Simpan
-                            </div>
-                            <div class="card-body">
-                                <div class="d-grid"><button class="fw-500 btn btn-primary">Simpan</button></div>
-                            </div>
+
+                    <!-- Page Heading -->
+                    <h1 class="h3 mb-2 text-gray-800"></h1>
+                    <div class="row align-items-center justify-content-between pt-3">
+                        <div class="col-auto mb-3">
+                            <h1 class="h3 mb-2 text-gray-800">Form Crew</h1>
+                            <p class="mb-4">Formulir untuk menambah Crew pada Event baru.</p>
+                        </div>
+                    </div>
+
+                    <div class="card mb-5 crew-item ">
+                        <div class="card-header">Crew
+                            <button class="close" type="button" aria-label="Close">
+                                <span>×</span>
+                            </button>
+                        </div>
+                        <div class="card-body">
+                            <select name="karyawan[]" class="form-control">
+                                <option value="" disabled selected hidden>Pilih Crew</option>
+                                @foreach ($karyawans as $karyawan)
+                                    <option value="{{ $karyawan->id }}">{{ $karyawan->nama }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="card-header">Status</div>
+                        <div class="card-body">
+                            <select name="status_crew[]" class="form-control">
+                                <option value="" disabled selected hidden>Pilih Status Crew</option>
+                                @foreach ($statuses as $status)
+                                    <option value="{{ $status['nama'] }}">{{ $status['nama'] }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="card-header">Keterangan</div>
+                        <div class="card-body">
+                            <input name="keterangan_crew[]" type="text" class="form-control"
+                                value="{{ old('keterangan_crew[]') }}" />
+                            @error('keterangan_crew')
+                                {{ $message }}
+                            @enderror
+                        </div>
+                        <div class="card-footer">
+                            <button type="button" class="btn btn-success btn-add-crew">Tambah Karyawan</button>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card card-header-actions">
+                        <div class="card-header">
+                            Simpan
+                        </div>
+                        <div class="card-body">
+                            <div class="d-grid"><button class="fw-500 btn btn-primary">Simpan</button></div>
                         </div>
                     </div>
                 </div>
-            </form>
-        </div>
+            </div>
+        </form>
     </div>
+</div>
 
 @section('script')
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
