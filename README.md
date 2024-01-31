@@ -11,6 +11,3 @@ Sistem informasi manajemen rental LED Indonesia Multimedia Project
 - [Laravel Breeze](https://laravel.com/docs/10.x/starter-kits#laravel-breeze)
 - [DomPDF](https://github.com/dompdf/dompdf)
 - [Laravel Excel](https://laravel-excel.com/)
-
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
-
